@@ -1,4 +1,4 @@
-using UnityEngine;
+/*using UnityEngine;
 using UnityEngine.AI;
 
 namespace Mechanics
@@ -40,7 +40,7 @@ namespace Mechanics
                         float angle = Random.Range(-110, 110);
                         transform.Rotate(0, angle, 0);
                     }
-                }*/
+                }#1#
             }
         }
         
@@ -48,4 +48,4 @@ namespace Mechanics
                 _alive = alive;
         }
     }
-}
+}*/

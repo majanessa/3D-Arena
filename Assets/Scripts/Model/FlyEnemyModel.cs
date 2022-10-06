@@ -5,9 +5,11 @@ namespace Model
     [System.Serializable]
     public class FlyEnemyModel
     {
-        public float hp = 50;
+        public int hp = 50;
         
-        public float attack = 25;
+        public int damage = 15;
+        
+        public int powerForPlayer = 15;
         
         public FlyEnemyController flyEnemyController;
     }

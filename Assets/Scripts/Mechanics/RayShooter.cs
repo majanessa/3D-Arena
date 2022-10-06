@@ -1,4 +1,5 @@
 using System.Collections;
+using Gameplay;
 using UnityEngine;
 
 namespace Mechanics
@@ -21,7 +22,7 @@ namespace Mechanics
         }
 
         private void Update() {
-            if (Input.GetMouseButtonDown(0)) {
+            if (Input.GetButtonDown("Fire1")) {
                 Vector3 point = new Vector3(
                     _camera.pixelWidth/2, _camera.pixelHeight/2, 0);
                 Ray ray = _camera.ScreenPointToRay(point);
@@ -29,24 +30,27 @@ namespace Mechanics
                 if (Physics.Raycast(ray, out hit))
                 {
                     GameObject hitObject = hit.transform.gameObject;
-                    ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
-                    if (target != null)
+                    GameObject fireInstance = GetComponent<LightningBallSpawner>().GetPooledObject(hit.point);
+                    if (fireInstance != null)
                     {
-                        target.ReactToHit();
-                    }
-                    else
-                    {
-                        StartCoroutine(SphereIndicator(hit.point));
+                        fireInstance.SetActive(true);
+                        fireInstance.GetComponent<Rigidbody>().velocity = fireInstance.transform.forward * 20;
+                        ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
+                        if (target != null)
+                        {
+                            target.ReactToHit();
+                        }
+                        StartCoroutine(FireballNotActive(fireInstance));
                     }
                 }
+                
             }
         }
-        private IEnumerator SphereIndicator(Vector3 pos) {
-            GameObject sphere = GameObject.CreatePrimitive(PrimitiveType.Sphere);
-            sphere.transform.position = pos;
-            yield return new WaitForSeconds(1);
-        
-            Destroy(sphere);
+
+        private IEnumerator FireballNotActive(GameObject fireInstance)
+        {
+            yield return new WaitForSeconds(3f);
+            fireInstance.SetActive(false);
         }
     }
 }

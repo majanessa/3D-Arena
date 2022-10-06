@@ -13,9 +13,8 @@ GameObject:
   - component: {fileID: 1622288707195270636}
   - component: {fileID: 1622288707195270627}
   - component: {fileID: 8720517146047753058}
-  - component: {fileID: -6679172431062007458}
   m_Layer: 0
-  m_Name: Fireball
+  m_Name: LightningBall
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -64,7 +63,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 1fd7bbbd6cda4614d8dcab635659f3e1, type: 2}
+  - {fileID: 2100000, guid: aa272f897705cbccdacfcd024148d1f6, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -111,19 +110,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: 0.05
   m_UseGravity: 0
-  m_IsKinematic: 1
+  m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!114 &-6679172431062007458
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1622288707195270625}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9962ebae6fc64d30812755b080b3c8dc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 

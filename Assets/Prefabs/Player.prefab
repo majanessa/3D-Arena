@@ -129,6 +129,7 @@ GameObject:
   - component: {fileID: 6016422904790152894}
   - component: {fileID: 6016422904790152895}
   - component: {fileID: 6016422904790152881}
+  - component: {fileID: 3107269829051476149}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -251,3 +252,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 3
   gravity: -9.8
+--- !u!114 &3107269829051476149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6016422904790152903}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 903caba248fd4e30b73e15bb2b194b2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 1622288707195270625, guid: 072091b1857ad8c3f8405e8271526cb3,
+    type: 3}
+  amountToPool: 10
+  shellSpeed: 25
+  _firePosition: {fileID: 0}

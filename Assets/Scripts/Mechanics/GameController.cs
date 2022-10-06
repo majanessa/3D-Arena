@@ -23,6 +23,8 @@ namespace Mechanics
         public BossEnemyModel bossEnemyModel = Simulation.GetModel<BossEnemyModel>();
         
         public FlyEnemyModel flyEnemyModel = Simulation.GetModel<FlyEnemyModel>();
+        
+        public bool gameOver = false;
 
         void OnEnable()
         {

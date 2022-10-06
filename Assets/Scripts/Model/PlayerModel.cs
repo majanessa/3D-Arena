@@ -5,14 +5,12 @@ namespace Model
     [System.Serializable]
     public class PlayerModel
     {
-        public float hp = 100;
+        public int hp = 100;
+        
+        public int power = 50;
 
-        public float maxAttack = 100;
-
-        public float attack = 50;
-
-        public float energy = 0;
-
+        public int maxPower = 100;
+        
         public PlayerController player;
     }
 }

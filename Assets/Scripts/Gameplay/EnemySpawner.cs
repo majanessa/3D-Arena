@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Mechanics;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Gameplay
 {
@@ -16,8 +17,8 @@ namespace Gameplay
         private static Dictionary<GameObject, EnemyController> _enemies;
         private Queue<GameObject> _currentPrefabs;
 
-        private float _maxIntervalSpawn = 5.0f;
-        private float _minxIntervalSpawn = 2.0f;
+        private int _maxIntervalSpawn = 5;
+        private int _minIntervalSpawn = 2;
         private Vector3 spawnPos = Vector3.zero;
         [SerializeField]
         private int countForSpawn = 1;
@@ -38,6 +39,7 @@ namespace Gameplay
                 _enemies.Add(prefab, script);
                 _currentPrefabs.Enqueue(prefab);
             }
+            ReactiveTarget.OnSpawn += ReturnToSpawn;
 
             StartCoroutine(Spawn());
         }
@@ -46,13 +48,13 @@ namespace Gameplay
         {
             while (true)
             {
-                if (_maxIntervalSpawn > _minxIntervalSpawn)
+                if (_maxIntervalSpawn > _minIntervalSpawn)
                 {
                     yield return new WaitForSeconds(_maxIntervalSpawn);
                     _maxIntervalSpawn--;
                 }
                 else
-                    yield return new WaitForSeconds(_minxIntervalSpawn);
+                    yield return new WaitForSeconds(_minIntervalSpawn);
 
                 if (_currentPrefabs.Count > 0)
                 {
@@ -63,6 +65,13 @@ namespace Gameplay
                     }
                 }
             }
+        }
+        
+        private void ReturnToSpawn(GameObject prefab)
+        {
+            prefab.transform.position = transform.position;
+            prefab.SetActive(false);
+            _currentPrefabs.Enqueue(prefab);
         }
     }
 }

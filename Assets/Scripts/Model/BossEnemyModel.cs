@@ -5,9 +5,11 @@ namespace Model
     [System.Serializable]
     public class BossEnemyModel
     {
-        public float hp = 100;
+        public int hp = 100;
 
-        public float attack = 25;
+        public int damage = 25;
+
+        public int powerForPlayer = 50;
         
         public BossEnemyController bossEnemy;
     }

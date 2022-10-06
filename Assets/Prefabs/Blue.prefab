@@ -16,6 +16,7 @@ GameObject:
   - component: {fileID: 6009660037925997769}
   - component: {fileID: 2670391099434841347}
   - component: {fileID: 1901427762723617592}
+  - component: {fileID: 3881431786173283424}
   m_Layer: 0
   m_Name: Blue
   m_TagString: Untagged
@@ -114,10 +115,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac453546060a4d8fa34482af193bdd59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 3
   obstacleRange: 5
-  fireballPrefab: {fileID: 1622288707195270625, guid: f51c6bb8042e7bf29b057c1f1bb3eced,
-    type: 3}
 --- !u!114 &6009660037925997769
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -137,7 +135,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 8185520819571872748}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 0.5
   m_Speed: 1
@@ -168,3 +166,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
+--- !u!114 &3881431786173283424
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8185520819571872748}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 051fe05b232c48cd9a27e60f7f8349f1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  pooledObjects: []
+  objectToPool: {fileID: 1622288707195270625, guid: f51c6bb8042e7bf29b057c1f1bb3eced,
+    type: 3}
+  amountToPool: 10

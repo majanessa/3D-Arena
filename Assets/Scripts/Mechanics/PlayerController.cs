@@ -1,35 +1,48 @@
+using Model;
+using UI;
 using UnityEngine;
 
 namespace Mechanics
 {
-    [RequireComponent(typeof(CharacterController))]
     public class PlayerController : MonoBehaviour
     {
-        public float speed = 3.0f;
-        public float gravity = -9.8f;
-        private CharacterController _charController;
+        public float speed = 3.0f, rotateSpeed = 6f;
         private int _health;
+        private Rigidbody _rb;
+        private PlayerModel _model;
+        private bool _alive;
 
         private void Start() {
-            _charController = GetComponent<CharacterController>();
-            _health = 5;
+            _model = GameController.Instance.playerModel;
+            _health = _model.hp;
+            _rb = GetComponent<Rigidbody>();
+            _alive = true;
         }
 
         private void Update() {
-            float deltaX = Input.GetAxis("Horizontal") * speed;
-            float deltaZ = Input.GetAxis("Vertical") * speed;
-            Vector3 movement = new Vector3(deltaX, 0, deltaZ);
-            movement = Vector3.ClampMagnitude(movement, speed);
-            movement.y = gravity;
-        
-            movement *= Time.deltaTime;
-            movement = transform.TransformDirection(movement);
-            _charController.Move(movement);
+            if (_alive)
+            {
+                float vertMove = Input.GetAxis("Vertical");
+                _rb.MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * speed * vertMove));
+                transform.Rotate(Vector3.up * rotateSpeed * Input.GetAxis("Horizontal"));
+            }
         }
         
         public void Hurt(int damage) {
             _health -= damage;
-                Debug.Log("Health: " + _health);
+            Debug.Log(damage);
+            if (_health <= 0)
+            {
+                GameController.Instance.gameObject.GetComponent<GameOver>().SetActive();
+            }
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            if (other.CompareTag("ArenaBorders"))
+            {
+                transform.position = new Vector3(-transform.position.x, transform.position.y, -transform.position.z);
+            }
         }
     }
 }
