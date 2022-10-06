@@ -18,8 +18,8 @@ namespace Gameplay
         private Queue<GameObject> _currentPrefabs;
 
         private int _maxIntervalSpawn = 5;
-        private int _minIntervalSpawn = 2;
-        private Vector3 spawnPos = Vector3.zero;
+        private readonly int _minIntervalSpawn = 2;
+        private Vector3 _spawnPos = Vector3.zero;
         [SerializeField]
         private int countForSpawn = 1;
 
@@ -30,10 +30,10 @@ namespace Gameplay
 
             for (int i = 0; i < poolCount; i++)
             {
-                spawnPos.x = Random.Range(-2, 2);
-                spawnPos.y = 0.5f;
-                spawnPos.z = Random.Range(-2, 2);
-                var prefab = Instantiate(objectToPool, spawnPos, Quaternion.identity);
+                _spawnPos.x = Random.Range(-2, 2);
+                _spawnPos.y = 0.5f;
+                _spawnPos.z = Random.Range(-2, 2);
+                var prefab = Instantiate(objectToPool, _spawnPos, Quaternion.identity);
                 var script = prefab.GetComponent<EnemyController>();
                 prefab.SetActive(false);
                 _enemies.Add(prefab, script);

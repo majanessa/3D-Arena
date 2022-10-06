@@ -2,8 +2,13 @@ using UnityEngine;
 
 namespace Mechanics
 {
-    public class FireballController : MonoBehaviour
+    public class FireballController : EnemyController
     {
+        private void Update()
+        {
+            transform.position = Vector3.MoveTowards(transform.position, PlayerTarget.position, Time.deltaTime * 3f);
+        }
+
         private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Player"))

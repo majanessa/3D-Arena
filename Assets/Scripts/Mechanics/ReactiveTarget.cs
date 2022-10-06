@@ -1,7 +1,6 @@
 using System;
 using System.Collections;
 using UnityEngine;
-using UnityEngine.AI;
 
 namespace Mechanics
 {
@@ -14,12 +13,9 @@ namespace Mechanics
         }
         private IEnumerator Die()
         {
-            NavMeshAgent agent = gameObject.GetComponent<NavMeshAgent>();
-            if (agent != null)
-                gameObject.GetComponent<NavMeshAgent>().enabled = false;
             yield return new WaitForSeconds(0);
-            //gameObject.GetComponent<EnemyController>().SetAlive(false);
             OnSpawn(gameObject);
+            gameObject.GetComponent<EnemyController>().SetAlive(false);
         }
     }
 }
