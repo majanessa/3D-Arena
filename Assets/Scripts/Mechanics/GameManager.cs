@@ -31,6 +31,7 @@ namespace Mechanics
             Cursor.visible = true;
             playerCam.gameObject.SetActive(false);
             cam.gameObject.SetActive(true);
+            Score.Instance.UpdateBestScoreUI();
         }
         
         public void Restart()
