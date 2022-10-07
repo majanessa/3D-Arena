@@ -23,22 +23,22 @@ namespace Mechanics
         public BossEnemyModel bossEnemyModel = Simulation.GetModel<BossEnemyModel>();
         
         public FlyEnemyModel flyEnemyModel = Simulation.GetModel<FlyEnemyModel>();
-        
-        public bool gameOver = false;
 
-        void OnEnable()
+        private void OnEnable()
         {
             Instance = this;
         }
 
-        void OnDisable()
+        private void OnDisable()
         {
             if (Instance == this) Instance = null;
         }
 
-        void Update()
+        private void Update()
         {
             if (Instance == this) Simulation.Tick();
+            if (Input.GetButtonDown("Pause"))
+                GameManager.Instance.Pause();
         }
     }
 }

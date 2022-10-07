@@ -1,22 +1,27 @@
 using System.Collections;
+using Model;
 using UnityEngine;
 
 namespace Mechanics
 {
     public class FlyEnemyController : EnemyController
     {
-        private bool _up = false;
-        public Transform heightTarget;
+        private bool _up;
+        private Transform _heightTarget;
+        private FlyEnemyModel _model;
 
         protected override void Start()
         {
             base.Start();
-            heightTarget = GameObject.FindGameObjectWithTag("HeightFly").GetComponent<Transform>();
+            _up = false;
+            _heightTarget = GameObject.FindGameObjectWithTag("HeightFly").GetComponent<Transform>();
+            _model = GameController.Instance.flyEnemyModel;
         }
 
         protected void Update()
         {
-            StartCoroutine(Fly());
+            //if (Alive)
+                StartCoroutine(Fly());
         }
 
         private IEnumerator Fly()
@@ -24,7 +29,7 @@ namespace Mechanics
             if (!_up)
             {
                 yield return new WaitForSeconds(0.5f);
-                transform.position = Vector3.MoveTowards(transform.position, heightTarget.position, Time.deltaTime * Random.Range(1f, 1.5f));
+                transform.position = Vector3.MoveTowards(transform.position, _heightTarget.position, Time.deltaTime * Random.Range(1f, 1.5f));
                 _up = true;
             }
             
@@ -34,13 +39,15 @@ namespace Mechanics
             
         }
         
-        /*private void OnCollisionEnter(Collision collision)
+        private void OnCollisionEnter(Collision collision)
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                collision.gameObject.GetComponent<PlayerController>().Hurt(GameController.Instance.flyEnemyModel.damage);
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+                player.Hurt(_model.damage);
+                player.AddPower(_model.powerForPlayer);
+                ReactiveTarget.OnSpawn(gameObject);
             }
-            gameObject.SetActive(false);
-        }*/
+        }
     }
 }

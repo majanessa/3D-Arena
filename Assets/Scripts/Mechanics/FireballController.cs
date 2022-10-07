@@ -1,9 +1,18 @@
+using Model;
 using UnityEngine;
 
 namespace Mechanics
 {
     public class FireballController : EnemyController
     {
+        private BossEnemyModel _bossEnemyModel;
+
+        protected override void Start()
+        {
+            base.Start();
+            _bossEnemyModel = GameController.Instance.bossEnemyModel;
+        }
+
         private void Update()
         {
             transform.position = Vector3.MoveTowards(transform.position, PlayerTarget.position, Time.deltaTime * 3f);
@@ -13,8 +22,10 @@ namespace Mechanics
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                collision.gameObject.GetComponent<PlayerController>().Hurt(GameController.Instance.bossEnemyModel.damage);
-                gameObject.SetActive(false);
+                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
+                player.Hurt(_bossEnemyModel.damage);
+                player.AddPower(_bossEnemyModel.powerForPlayer);
+                Destroy(gameObject);
             }
         }
         

@@ -1,3 +1,4 @@
+using Mechanics;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -15,6 +16,7 @@ namespace UI
 
         public void SetActive()
         {
+            ReactiveTarget.OnSpawn = null;
             Cursor.lockState = CursorLockMode.Confined;
             Cursor.visible = true;
             gameOverPanel.SetActive(true);

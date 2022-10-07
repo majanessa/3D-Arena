@@ -17,7 +17,7 @@ GameObject:
   - component: {fileID: 5305235323558795775}
   m_Layer: 0
   m_Name: Red
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -113,8 +113,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 08f977b720af4fac8dfa20cd7637df35, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  HeightTarget: {fileID: 7750311717634629005, guid: 83665b5957d5afc6d82882b1a51a1dc2,
-    type: 3}
 --- !u!114 &5169324033792776199
 MonoBehaviour:
   m_ObjectHideFlags: 0

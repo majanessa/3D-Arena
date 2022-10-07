@@ -49,7 +49,7 @@ namespace Mechanics
 
         private IEnumerator FireballNotActive(GameObject fireInstance)
         {
-            yield return new WaitForSeconds(3f);
+            yield return new WaitForSeconds(2f);
             fireInstance.SetActive(false);
         }
     }

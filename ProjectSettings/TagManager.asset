@@ -6,6 +6,7 @@ TagManager:
   tags:
   - HeightFly
   - ArenaBorders
+  - Enemy
   layers:
   - Default
   - TransparentFX

@@ -1,4 +1,5 @@
 using System.Collections;
+using Model;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -33,8 +34,7 @@ namespace Mechanics
             {
                 yield return new WaitForSeconds(3);
                 GameObject fireball = Instantiate(fireballPrefab);
-                fireball.transform.position =
-                    transform.TransformPoint(PlayerTarget.position * 0.5f);
+                fireball.transform.position = transform.TransformPoint(PlayerTarget.position * 0.5f);
                 fireball.transform.rotation = transform.rotation;
             }
         }
