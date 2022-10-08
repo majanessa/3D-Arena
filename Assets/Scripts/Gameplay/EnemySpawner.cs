@@ -55,8 +55,7 @@ namespace Gameplay
                 }
                 else
                     yield return new WaitForSeconds(_minIntervalSpawn);
-
-                Debug.Log(_currentPrefabs.Count);
+                
                 if (_currentPrefabs.Count > 0)
                 {
                     for (int i = 0; i < countForSpawn; i++)

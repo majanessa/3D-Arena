@@ -1,3 +1,4 @@
+using Core;
 using Model;
 using UnityEngine;
 
@@ -5,12 +6,13 @@ namespace Mechanics
 {
     public class FireballController : EnemyController
     {
-        private BossEnemyModel _bossEnemyModel;
+        //private BossEnemyModel _bossEnemyModel;
+        private readonly BossEnemyModel _bossEnemyModel = Simulation.GetModel<BossEnemyModel>();
 
         protected override void Start()
         {
             base.Start();
-            _bossEnemyModel = GameController.Instance.bossEnemyModel;
+            //_bossEnemyModel = GameController.Instance.bossEnemyModel;
         }
 
         private void Update()
@@ -23,8 +25,7 @@ namespace Mechanics
             if (collision.gameObject.CompareTag("Player"))
             {
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                player.Hurt(_bossEnemyModel.damage);
-                player.AddPower(_bossEnemyModel.powerForPlayer);
+                player.Hurt(_bossEnemyModel.Damage);
                 Destroy(gameObject);
             }
         }

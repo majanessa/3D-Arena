@@ -1,4 +1,5 @@
 using System.Collections;
+using Core;
 using Model;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -12,8 +13,10 @@ namespace Mechanics
         protected override void Start()
         {
             base.Start();
+            //model = GameController.Instance.bossEnemyModel;
             transform.TransformPoint(PlayerTarget.position * 0.5f);
             StartCoroutine(FireballSpawn());
+            Model = Simulation.GetModel<BossEnemyModel>();
         }
 
         protected void Update()

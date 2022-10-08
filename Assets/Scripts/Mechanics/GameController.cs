@@ -18,11 +18,6 @@ namespace Mechanics
         //through the simulation and events. Unity will deserialize over this
         //shared reference when the scene loads, allowing the model to be
         //conveniently configured inside the inspector.
-        public PlayerModel playerModel = Simulation.GetModel<PlayerModel>();
-        
-        public BossEnemyModel bossEnemyModel = Simulation.GetModel<BossEnemyModel>();
-        
-        public FlyEnemyModel flyEnemyModel = Simulation.GetModel<FlyEnemyModel>();
 
         private void OnEnable()
         {

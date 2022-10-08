@@ -38,7 +38,7 @@ namespace Mechanics
                         ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
                         if (target != null)
                         {
-                            target.ReactToHit();
+                            target.ReactToHit(gameObject.GetComponentInParent<PlayerController>());
                         }
                         StartCoroutine(FireballNotActive(fireInstance));
                     }

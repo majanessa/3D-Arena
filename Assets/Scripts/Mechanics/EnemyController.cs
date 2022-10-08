@@ -1,3 +1,4 @@
+using Model;
 using UnityEngine;
 
 namespace Mechanics
@@ -6,6 +7,7 @@ namespace Mechanics
     {
         protected Transform PlayerTarget;
         protected bool Alive;
+        public IEnemyModel Model;
 
         protected virtual void Start()
         {

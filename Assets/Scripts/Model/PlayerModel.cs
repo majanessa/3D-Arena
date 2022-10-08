@@ -11,6 +11,6 @@ namespace Model
 
         public int maxPower = 100;
         
-        public PlayerController player;
+        //public PlayerController player;
     }
 }

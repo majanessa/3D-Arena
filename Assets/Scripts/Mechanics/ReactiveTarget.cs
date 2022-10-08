@@ -8,15 +8,17 @@ namespace Mechanics
     public class ReactiveTarget : MonoBehaviour {
 
         public static Action<GameObject> OnSpawn;
-        
-        public void ReactToHit() {
-            StartCoroutine(Die());
+
+        public void ReactToHit(PlayerController player) {
+            StartCoroutine(Die(player));
         }
-        private IEnumerator Die()
+        private IEnumerator Die(PlayerController player)
         {
             yield return new WaitForSeconds(0);
+            EnemyController enemy = gameObject.GetComponent<EnemyController>();
+            player.AddPower(enemy.Model.PowerForPlayer);
+            enemy.SetAlive(false);
             OnSpawn(gameObject);
-            gameObject.GetComponent<EnemyController>().SetAlive(false);
             Score.Instance.AddScore(1);
         }
     }

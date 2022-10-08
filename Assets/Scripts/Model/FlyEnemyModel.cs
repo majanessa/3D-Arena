@@ -1,16 +1,14 @@
-using Mechanics;
-
 namespace Model
 {
     [System.Serializable]
-    public class FlyEnemyModel
+    public class FlyEnemyModel : IEnemyModel
     {
         public int hp = 50;
         
-        public int damage = 15;
+        public int Damage => 15;
         
-        public int powerForPlayer = 15;
+        public int PowerForPlayer => 15;
         
-        public FlyEnemyController flyEnemyController;
+        //public FlyEnemyController flyEnemyController;
     }
 }

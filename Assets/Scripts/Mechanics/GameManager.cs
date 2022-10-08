@@ -12,13 +12,14 @@ namespace Mechanics
         
         public bool gameOver = false;
 
-        public bool pause = false;
+        public bool pause;
         
         public Camera cam, playerCam;
 
         private void Awake()
         {
             Instance = this;
+            pause = false;
         }
         
         public void GameOver()

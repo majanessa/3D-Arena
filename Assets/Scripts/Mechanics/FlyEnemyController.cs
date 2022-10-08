@@ -1,4 +1,5 @@
 using System.Collections;
+using Core;
 using Model;
 using UnityEngine;
 
@@ -8,14 +9,14 @@ namespace Mechanics
     {
         private bool _up;
         private Transform _heightTarget;
-        private FlyEnemyModel _model;
 
         protected override void Start()
         {
             base.Start();
             _up = false;
             _heightTarget = GameObject.FindGameObjectWithTag("HeightFly").GetComponent<Transform>();
-            _model = GameController.Instance.flyEnemyModel;
+            //model = GameController.Instance.flyEnemyModel;
+            Model = Simulation.GetModel<FlyEnemyModel>();
         }
 
         protected void Update()
@@ -44,8 +45,7 @@ namespace Mechanics
             if (collision.gameObject.CompareTag("Player"))
             {
                 PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                player.Hurt(_model.damage);
-                player.AddPower(_model.powerForPlayer);
+                player.Hurt(Model.Damage);
                 ReactiveTarget.OnSpawn(gameObject);
             }
         }
