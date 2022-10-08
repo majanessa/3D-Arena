@@ -11,8 +11,8 @@ namespace Mechanics
         private void Start() {
             _camera = GetComponent<Camera>();
             
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            /*Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;*/
             _player = GetComponent<PlayerController>();
         }
 

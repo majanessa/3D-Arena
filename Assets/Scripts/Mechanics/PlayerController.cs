@@ -1,5 +1,6 @@
 using Core;
 using Model;
+using UI;
 using UnityEngine;
 
 namespace Mechanics
@@ -15,6 +16,8 @@ namespace Mechanics
         public RectTransform healthBar;
         public RectTransform powerBar;
         public PlayerModel model = Simulation.GetModel<PlayerModel>();
+        public FixedJoystick MoveJoystick;
+        public FixedButton UltaButton;
 
         private void Start()
         {
@@ -29,9 +32,9 @@ namespace Mechanics
         {
             if (_alive)
             {
-                float vertMove = Input.GetAxis("Vertical");
+                float vertMove = MoveJoystick.Vertical;
                 _rb.MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * speed * vertMove));
-                transform.Rotate(Vector3.up * rotateSpeed * Input.GetAxis("Horizontal"));
+                transform.Rotate(Vector3.up * rotateSpeed * MoveJoystick.Horizontal);
                 Ulta();
             }
         }
@@ -59,15 +62,19 @@ namespace Mechanics
 
         private void Ulta()
         {
-            if (power >= model.maxPower && Input.GetButtonDown("Fire2"))
+            if (power >= model.maxPower)
             {
-                _enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                for (int i = 0; i < _enemies.Length; i++)
+                UltaButton.gameObject.SetActive(true);
+                if (UltaButton.Pressed)
                 {
-                    ReactiveTarget.OnSpawn(_enemies[i]);
+                    _enemies = GameObject.FindGameObjectsWithTag("Enemy");
+                    for (int i = 0; i < _enemies.Length; i++)
+                    {
+                        ReactiveTarget.OnSpawn(_enemies[i]);
+                    }
+                    powerBar.offsetMax = new Vector2(200f * (-model.maxPower - model.maxPower) / 100f, 0);
+                    power = 0;
                 }
-                powerBar.offsetMax = new Vector2(200f * (-model.maxPower - model.maxPower) / 100f, 0);
-                power = 0;
             }
         }
 

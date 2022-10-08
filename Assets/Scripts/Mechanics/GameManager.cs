@@ -28,8 +28,8 @@ namespace Mechanics
             //score.UpdateBestScoreUI();
             ui.OnGameOverPanel();
             ReactiveTarget.OnSpawn = null;
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            /*Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;*/
             playerCam.gameObject.SetActive(false);
             cam.gameObject.SetActive(true);
             Score.Instance.UpdateBestScoreUI();
@@ -50,8 +50,8 @@ namespace Mechanics
             Time.timeScale = 0;
             playerCam.gameObject.SetActive(false);
             cam.gameObject.SetActive(true);
-            Cursor.lockState = CursorLockMode.Confined;
-            Cursor.visible = true;
+            /*Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;*/
         }
 
         public void UnPause()
@@ -61,8 +61,8 @@ namespace Mechanics
             Time.timeScale = 1;
             playerCam.gameObject.SetActive(true);
             cam.gameObject.SetActive(false);
-            Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;
+            /*Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;*/
         }
     }
 }
