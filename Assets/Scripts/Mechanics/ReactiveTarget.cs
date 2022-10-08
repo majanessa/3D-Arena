@@ -17,7 +17,6 @@ namespace Mechanics
             yield return new WaitForSeconds(0);
             EnemyController enemy = gameObject.GetComponent<EnemyController>();
             player.AddPower(enemy.Model.PowerForPlayer);
-            enemy.SetAlive(false);
             OnSpawn(gameObject);
             Score.Instance.AddScore(1);
         }

@@ -13,7 +13,6 @@ namespace Mechanics
         protected override void Start()
         {
             base.Start();
-            //model = GameController.Instance.bossEnemyModel;
             transform.TransformPoint(PlayerTarget.position * 0.5f);
             StartCoroutine(FireballSpawn());
             Model = Simulation.GetModel<BossEnemyModel>();
@@ -21,8 +20,7 @@ namespace Mechanics
 
         protected void Update()
         {
-            if (Alive)
-                StartCoroutine(GoToPlayer());
+            StartCoroutine(GoToPlayer());
         }
 
         private IEnumerator GoToPlayer()
@@ -33,7 +31,7 @@ namespace Mechanics
         
         private IEnumerator FireballSpawn()
         {
-            while (Alive)
+            while (true)
             {
                 yield return new WaitForSeconds(3);
                 GameObject fireball = Instantiate(fireballPrefab);

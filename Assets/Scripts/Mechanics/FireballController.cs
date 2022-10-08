@@ -6,14 +6,7 @@ namespace Mechanics
 {
     public class FireballController : EnemyController
     {
-        //private BossEnemyModel _bossEnemyModel;
         private readonly BossEnemyModel _bossEnemyModel = Simulation.GetModel<BossEnemyModel>();
-
-        protected override void Start()
-        {
-            base.Start();
-            //_bossEnemyModel = GameController.Instance.bossEnemyModel;
-        }
 
         private void Update()
         {
