@@ -1,16 +1,10 @@
-using Mechanics;
-
-namespace Model
+namespace Model.Enemy
 {
     [System.Serializable]
     public class BossEnemyModel : IEnemyModel
     {
-        public int hp = 100;
-
         public int Damage => 25;
-
         public int PowerForPlayer => 50;
-
-        //public BossEnemyController bossEnemy;
+        public float Speed => 0.5f;
     }
 }

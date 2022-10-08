@@ -1,19 +1,16 @@
-using System.Collections;
 using Gameplay;
 using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.Player
 {
     public class RayShooter : MonoBehaviour {
         private Camera _camera;
-        private PlayerController _player;
 
         private void Start() {
             _camera = GetComponent<Camera>();
             
             /*Cursor.lockState = CursorLockMode.Locked;
             Cursor.visible = false;*/
-            _player = GetComponent<PlayerController>();
         }
 
         private void OnGUI() {
@@ -28,31 +25,17 @@ namespace Mechanics
                 Vector3 point = new Vector3(
                     _camera.pixelWidth/2, _camera.pixelHeight/2, 0);
                 Ray ray = _camera.ScreenPointToRay(point);
-                RaycastHit hit;
-                if (Physics.Raycast(ray, out hit))
+                if (Physics.Raycast(ray, out var hit))
                 {
-                    //GameObject hitObject = hit.transform.gameObject;
                     GameObject fireInstance = GetComponent<LightningBallSpawner>().GetPooledObject(hit.point);
                     if (fireInstance != null)
                     {
                         fireInstance.SetActive(true);
                         fireInstance.GetComponent<Rigidbody>().velocity = fireInstance.transform.forward * 20;
-                        /*ReactiveTarget target = hitObject.GetComponent<ReactiveTarget>();
-                        if (target != null)
-                        {
-                            target.ReactToHit(gameObject.GetComponentInParent<PlayerController>());
-                        }*/
-
                     }
                 }
                 
             }
-        }
-
-        private IEnumerator FireballNotActive(GameObject fireInstance)
-        {
-            yield return new WaitForSeconds(2f);
-            fireInstance.SetActive(false);
         }
     }
 }

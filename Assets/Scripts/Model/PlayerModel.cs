@@ -1,5 +1,3 @@
-using Mechanics;
-
 namespace Model
 {
     [System.Serializable]
@@ -10,7 +8,9 @@ namespace Model
         public int power = 50;
 
         public int maxPower = 100;
-        
-        //public PlayerController player;
+
+        public float speed = 3.0f;
+
+        public float rotateSpeed = 6.0f;
     }
 }

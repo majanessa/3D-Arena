@@ -1,27 +1,27 @@
 using Core;
-using Model;
+using Mechanics.Enemy;
+using UI;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 namespace Mechanics
 {
-    /// <summary>
-    /// This class exposes the the game model in the inspector, and ticks the
-    /// simulation.
-    /// </summary> 
     public class GameController : MonoBehaviour
     {
         public static GameController Instance { get; private set; }
+        
+        public UIController ui;
+        
+        public Camera cam, playerCam;
+        
+        public bool gameOver = false;
 
-        //This model field is public and can be therefore be modified in the 
-        //inspector.
-        //The reference actually comes from the InstanceRegister, and is shared
-        //through the simulation and events. Unity will deserialize over this
-        //shared reference when the scene loads, allowing the model to be
-        //conveniently configured inside the inspector.
-
+        public bool pause;
+        
         private void OnEnable()
         {
             Instance = this;
+            pause = false;
         }
 
         private void OnDisable()
@@ -33,7 +33,49 @@ namespace Mechanics
         {
             if (Instance == this) Simulation.Tick();
             if (Input.GetButtonDown("Pause"))
-                GameManager.Instance.Pause();
+               Pause();
+        }
+        
+        public void GameOver()
+        {
+            gameOver = true;
+            ui.OnGameOverPanel();
+            Score.Instance.UpdateBestScoreUI();
+            ReactiveTarget.OnSpawn = null;
+            /*Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;*/
+            playerCam.gameObject.SetActive(false);
+            cam.gameObject.SetActive(true);
+        }
+        
+        public void Restart()
+        {
+            SceneManager.LoadScene("SampleScene");
+            Time.timeScale = 1;
+            gameOver = false;
+            pause = false;
+        }
+
+        public void Pause()
+        {
+            ui.OnPausePanel();
+            pause = true;
+            Time.timeScale = 0;
+            playerCam.gameObject.SetActive(false);
+            cam.gameObject.SetActive(true);
+            /*Cursor.lockState = CursorLockMode.Confined;
+            Cursor.visible = true;*/
+        }
+
+        public void UnPause()
+        {
+            ui.UnPausePanel();
+            pause = false;
+            Time.timeScale = 1;
+            playerCam.gameObject.SetActive(true);
+            cam.gameObject.SetActive(false);
+            /*Cursor.lockState = CursorLockMode.Locked;
+            Cursor.visible = false;*/
         }
     }
 }

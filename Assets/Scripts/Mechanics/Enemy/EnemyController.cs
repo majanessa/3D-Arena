@@ -1,7 +1,7 @@
-using Model;
+using Model.Enemy;
 using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.Enemy
 {
     public abstract class EnemyController : MonoBehaviour
     {

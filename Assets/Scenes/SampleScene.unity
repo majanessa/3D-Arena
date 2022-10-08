@@ -1763,10 +1763,10 @@ RectTransform:
   m_Father: {fileID: 1094199145}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 14.8}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.13000001, y: 0.56}
+  m_AnchorMax: {x: 0.87000006, y: 0.74}
+  m_AnchoredPosition: {x: 0, y: -0.20000076}
+  m_SizeDelta: {x: 86, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &733766153
 MonoBehaviour:
@@ -1812,8 +1812,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1395317387}
-        m_TargetAssemblyTypeName: Mechanics.GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1395317385}
+        m_TargetAssemblyTypeName: Mechanics.GameController, Assembly-CSharp
         m_MethodName: UnPause
         m_Mode: 1
         m_Arguments:
@@ -2595,10 +2595,10 @@ RectTransform:
   m_Father: {fileID: 1548180899}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -27.9}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.13000001, y: 0.12900001}
+  m_AnchorMax: {x: 0.87000006, y: 0.31}
+  m_AnchoredPosition: {x: 0, y: 0.1000061}
+  m_SizeDelta: {x: 86, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241299547
 MonoBehaviour:
@@ -2644,8 +2644,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1395317387}
-        m_TargetAssemblyTypeName: Mechanics.GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1395317385}
+        m_TargetAssemblyTypeName: Mechanics.GameController, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -2821,6 +2821,35 @@ SphereCollider:
   serializedVersion: 2
   m_Radius: 1
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1375209301
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122861184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 95d53dec11534814b59de68f515e4ec9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  powerBar: {fileID: 229005640}
+  ultaButton: {fileID: 1852543620}
+  currentPower: 0
+--- !u!114 &1375209302
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122861184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30a6d7c15ad647c28805dcf2feb21020, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  healthBar: {fileID: 392541485}
+  currentHealth: 0
 --- !u!1 &1395317384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2831,7 +2860,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1395317386}
   - component: {fileID: 1395317385}
-  - component: {fileID: 1395317387}
   - component: {fileID: 1395317388}
   m_Layer: 0
   m_Name: GameController
@@ -2852,6 +2880,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c716c560e29423c8ec55d74b0643345, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ui: {fileID: 649914945}
+  cam: {fileID: 534669904}
+  playerCam: {fileID: 243192495}
+  gameOver: 0
+  pause: 0
 --- !u!4 &1395317386
 Transform:
   m_ObjectHideFlags: 0
@@ -2867,23 +2900,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1395317387
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1395317384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00b24b9da29e496f9fa2f426123e5cda, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  ui: {fileID: 649914945}
-  gameOver: 0
-  pause: 0
-  cam: {fileID: 534669904}
-  playerCam: {fileID: 243192495}
 --- !u!114 &1395317388
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3164,9 +3180,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ab52448f04ee4ade878388373b336cfe, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  TouchDist: {x: 0, y: 0}
-  PointerOld: {x: 0, y: 0}
-  Pressed: 0
+  touchDist: {x: 0, y: 0}
+  pointerOld: {x: 0, y: 0}
+  pressed: 0
 --- !u!1 &1839263168
 GameObject:
   m_ObjectHideFlags: 0
@@ -3355,7 +3371,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aa3845a6954014858bf8de50e68de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pressed: 0
+  pressed: 0
 --- !u!114 &1852543621
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3368,7 +3384,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 25aa3845a6954014858bf8de50e68de2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Pressed: 0
+  pressed: 0
 --- !u!1 &1902113696
 GameObject:
   m_ObjectHideFlags: 0
@@ -3404,10 +3420,10 @@ RectTransform:
   m_Father: {fileID: 1094199145}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: -15.2}
-  m_SizeDelta: {x: 160, y: 30}
+  m_AnchorMin: {x: 0.13000001, y: 0.259}
+  m_AnchorMax: {x: 0.87000006, y: 0.44000003}
+  m_AnchoredPosition: {x: 0, y: -0.19999695}
+  m_SizeDelta: {x: 86, y: 12}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902113698
 MonoBehaviour:
@@ -3453,8 +3469,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 1395317387}
-        m_TargetAssemblyTypeName: Mechanics.GameManager, Assembly-CSharp
+      - m_Target: {fileID: 1395317385}
+        m_TargetAssemblyTypeName: Mechanics.GameController, Assembly-CSharp
         m_MethodName: Restart
         m_Mode: 1
         m_Arguments:
@@ -4017,6 +4033,11 @@ PrefabInstance:
       objectReference: {fileID: 1824301249}
     - target: {fileID: 6016422903278439528, guid: fb670786dc53df6e583b9ad63d4a47b0,
         type: 3}
+      propertyPath: lookJoystick
+      value: 
+      objectReference: {fileID: 1824301249}
+    - target: {fileID: 6016422903278439528, guid: fb670786dc53df6e583b9ad63d4a47b0,
+        type: 3}
       propertyPath: sensitivityHor
       value: 3
       objectReference: {fileID: 0}
@@ -4063,6 +4084,11 @@ PrefabInstance:
     - target: {fileID: 6016422904790152881, guid: fb670786dc53df6e583b9ad63d4a47b0,
         type: 3}
       propertyPath: MoveJoystick
+      value: 
+      objectReference: {fileID: 249408103}
+    - target: {fileID: 6016422904790152881, guid: fb670786dc53df6e583b9ad63d4a47b0,
+        type: 3}
+      propertyPath: moveJoystick
       value: 
       objectReference: {fileID: 249408103}
     - target: {fileID: 6016422904790152891, guid: fb670786dc53df6e583b9ad63d4a47b0,
@@ -4138,6 +4164,11 @@ PrefabInstance:
     - target: {fileID: 6016422904790152895, guid: fb670786dc53df6e583b9ad63d4a47b0,
         type: 3}
       propertyPath: LookJoystick
+      value: 
+      objectReference: {fileID: 1824301249}
+    - target: {fileID: 6016422904790152895, guid: fb670786dc53df6e583b9ad63d4a47b0,
+        type: 3}
+      propertyPath: lookJoystick
       value: 
       objectReference: {fileID: 1824301249}
     - target: {fileID: 6016422904790152895, guid: fb670786dc53df6e583b9ad63d4a47b0,

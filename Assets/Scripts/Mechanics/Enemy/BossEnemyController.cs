@@ -1,10 +1,10 @@
 using System.Collections;
 using Core;
-using Model;
+using Model.Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Mechanics
+namespace Mechanics.Enemy
 {
     public class BossEnemyController : EnemyController
     {
@@ -13,9 +13,9 @@ namespace Mechanics
         protected override void Start()
         {
             base.Start();
-            transform.TransformPoint(PlayerTarget.position * 0.5f);
-            StartCoroutine(FireballSpawn());
             Model = Simulation.GetModel<BossEnemyModel>();
+            transform.TransformPoint(PlayerTarget.position * Model.Speed);
+            StartCoroutine(FireballSpawn());
         }
 
         protected void Update()
@@ -35,7 +35,7 @@ namespace Mechanics
             {
                 yield return new WaitForSeconds(3);
                 GameObject fireball = Instantiate(fireballPrefab);
-                fireball.transform.position = transform.TransformPoint(PlayerTarget.position * 0.5f);
+                fireball.transform.position = transform.TransformPoint(PlayerTarget.position * Model.Speed);
                 fireball.transform.rotation = transform.rotation;
             }
         }

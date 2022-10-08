@@ -1,7 +1,8 @@
 using System.Collections;
+using Mechanics.Enemy;
 using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.Player
 {
     public class LightningBallController : MonoBehaviour
     {
@@ -24,33 +25,32 @@ namespace Mechanics
                 if (_countEnemy >= 2)
                 {
                     Debug.Log("Yes");
-                    player.AddPower(15);
-                    player.AddHalfHurt();
+                    player.power.AddPower(15);
+                    player.health.AddHalfHurt();
                 }
                 ReactiveTarget target = collision.gameObject.GetComponent<ReactiveTarget>();
                 if (target != null)
                     target.ReactToHit(player);
-                if (player.health > 80)
+                if (player.health.currentHealth > 80)
                     StartCoroutine(FireballNotActive(gameObject, 0));
-                else if (player.health is > 50 and < 80)
+                else if (player.health.currentHealth is > 50 and < 80)
                 {
                     int random = Random.Range(1, 100);
                     if (random > 50)
                         _rb.velocity = Vector3.Reflect(-collision.relativeVelocity.normalized, collision.contacts[0].normal) * 20;
                 } 
-                else if (player.health is > 30 and < 50)
+                else if (player.health.currentHealth is > 30 and < 50)
                 {
                     int random = Random.Range(1, 100);
                     if (random > 30)
                         _rb.velocity = Vector3.Reflect(-collision.relativeVelocity.normalized, collision.contacts[0].normal) * 20;
                 } 
-                else if (player.health < 30)
+                else if (player.health.currentHealth < 30)
                     _rb.velocity = Vector3.Reflect(-collision.relativeVelocity.normalized, collision.contacts[0].normal) * 20;
 
                 StartCoroutine(FireballNotActive(gameObject, 1f));
             }
         }
-        
         
         private IEnumerator FireballNotActive(GameObject fireInstance, float time)
         {

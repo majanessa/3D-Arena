@@ -1,8 +1,11 @@
 using Core;
-using Model;
+using Gameplay;
+using Mechanics.Player;
+using Model.Enemy;
 using UnityEngine;
+using static Core.Simulation;
 
-namespace Mechanics
+namespace Mechanics.Enemy
 {
     public class FireballController : EnemyController
     {
@@ -17,8 +20,9 @@ namespace Mechanics
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                player.Hurt(_bossEnemyModel.Damage);
+                var ev = Schedule<PlayerEnemyCollision>();
+                ev.Player = collision.gameObject.GetComponent<PlayerController>();
+                ev.Damage = _bossEnemyModel.Damage;
                 Destroy(gameObject);
             }
         }

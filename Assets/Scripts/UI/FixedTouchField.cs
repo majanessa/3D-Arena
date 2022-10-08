@@ -6,54 +6,45 @@ namespace UI
     public class FixedTouchField : MonoBehaviour, IPointerDownHandler, IPointerUpHandler
     {
         [HideInInspector]
-        public Vector2 TouchDist;
+        public Vector2 touchDist;
         [HideInInspector]
-        public Vector2 PointerOld;
+        public Vector2 pointerOld;
         [HideInInspector]
-        protected int PointerId;
-        [HideInInspector]
-        public bool Pressed;
-
-        // Use this for initialization
-        void Start()
+        public bool pressed;
+        private int _pointerId;
+        
+        private void Update()
         {
-
-        }
-
-        // Update is called once per frame
-        void Update()
-        {
-            if (Pressed)
+            if (pressed)
             {
-                if (PointerId >= 0 && PointerId < Input.touches.Length)
+                if (_pointerId >= 0 && _pointerId < Input.touches.Length)
                 {
-                    TouchDist = Input.touches[PointerId].position - PointerOld;
-                    PointerOld = Input.touches[PointerId].position;
+                    touchDist = Input.touches[_pointerId].position - pointerOld;
+                    pointerOld = Input.touches[_pointerId].position;
                 }
                 else
                 {
-                    TouchDist = new Vector2(Input.mousePosition.x, Input.mousePosition.y) - PointerOld;
-                    PointerOld = Input.mousePosition;
+                    touchDist = new Vector2(Input.mousePosition.x, Input.mousePosition.y) - pointerOld;
+                    pointerOld = Input.mousePosition;
                 }
             }
             else
             {
-                TouchDist = new Vector2();
+                touchDist = new Vector2();
             }
         }
 
         public void OnPointerDown(PointerEventData eventData)
         {
-            Pressed = true;
-            PointerId = eventData.pointerId;
-            PointerOld = eventData.position;
+            pressed = true;
+            _pointerId = eventData.pointerId;
+            pointerOld = eventData.position;
         }
 
 
         public void OnPointerUp(PointerEventData eventData)
         {
-            Pressed = false;
+            pressed = false;
         }
-    
     }
 }

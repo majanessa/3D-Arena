@@ -1,9 +1,11 @@
 using UI;
 using UnityEngine;
 
-namespace Mechanics
+namespace Mechanics.Player
 {
     public class MouseLook : MonoBehaviour {
+        
+        public FixedTouchField lookJoystick;
         public enum RotationAxes {
             MouseXAndY = 0,
             MouseX = 1,
@@ -15,7 +17,6 @@ namespace Mechanics
         public float minimumVert = -45.0f;
         public float maximumVert = 45.0f;
         private float _rotationX = 0;
-        public FixedTouchField LookJoystick;
 
         private void Start() {
             Rigidbody body = GetComponent<Rigidbody>();
@@ -24,21 +25,21 @@ namespace Mechanics
         }
 
         private void Update() {
-            if (!GameManager.Instance.pause)
+            if (!GameController.Instance.pause)
             {
                 if (axes == RotationAxes.MouseX) {
-                    transform.Rotate(0, LookJoystick.TouchDist.x * sensitivityHor, 0);
+                    transform.Rotate(0, lookJoystick.touchDist.x * sensitivityHor, 0);
                 }
                 else if (axes == RotationAxes.MouseY) {
-                    _rotationX -= LookJoystick.TouchDist.y * sensitivityVert;
+                    _rotationX -= lookJoystick.touchDist.y * sensitivityVert;
                     _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
                     float rotationY = transform.localEulerAngles.y;
                     transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
                 }
                 else {
-                    _rotationX -= LookJoystick.TouchDist.y * sensitivityVert;
+                    _rotationX -= lookJoystick.touchDist.y * sensitivityVert;
                     _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
-                    float delta = LookJoystick.TouchDist.x * sensitivityHor;
+                    float delta = lookJoystick.touchDist.x * sensitivityHor;
                     float rotationY = transform.localEulerAngles.y + delta;
             
                     transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
