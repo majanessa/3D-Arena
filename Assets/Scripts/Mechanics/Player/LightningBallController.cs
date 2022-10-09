@@ -49,6 +49,8 @@ namespace Mechanics.Player
 
                 StartCoroutine(FireballNotActive(gameObject, 1f));
             }
+            else
+                gameObject.SetActive(false);
         }
         
         private IEnumerator FireballNotActive(GameObject fireInstance, float time)

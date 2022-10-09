@@ -3,7 +3,11 @@ using UnityEngine;
 
 namespace Mechanics.Player
 {
-    public class RayShooter : MonoBehaviour {
+    public class RayShooter : MonoBehaviour 
+    {
+        [HideInInspector]
+        public bool shootAxis;
+        
         private Camera _camera;
 
         private void Start() {
@@ -23,7 +27,7 @@ namespace Mechanics.Player
         }
 
         private void Update() {
-            if (Input.GetButtonDown("Fire1")) {
+            if (shootAxis) {
                 Vector3 point = new Vector3(
                     _camera.pixelWidth/2, _camera.pixelHeight/2, 0);
                 Ray ray = _camera.ScreenPointToRay(point);
