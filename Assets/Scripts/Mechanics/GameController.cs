@@ -18,6 +18,11 @@ namespace Mechanics
 
         public bool pause;
         
+        public GameObject pauseButton;
+
+        [HideInInspector]
+        public bool PauseAxis;
+
         private void OnEnable()
         {
             Instance = this;
@@ -32,7 +37,7 @@ namespace Mechanics
         private void Update()
         {
             if (Instance == this) Simulation.Tick();
-            if (Input.GetButtonDown("Pause"))
+            if (PauseAxis)
                Pause();
         }
         

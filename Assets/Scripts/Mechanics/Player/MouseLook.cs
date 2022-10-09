@@ -22,6 +22,11 @@ namespace Mechanics.Player
             Rigidbody body = GetComponent<Rigidbody>();
             if (body != null)
                 body.freezeRotation = true;
+            if (Application.isEditor)
+            {
+                sensitivityHor = 6.0f;
+                sensitivityVert = 6.0f;
+            }
         }
 
         private void Update() {
