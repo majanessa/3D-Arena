@@ -14,7 +14,7 @@ namespace Mechanics
         private Power _power;
         private RayShooter _shoot;
         private GameController _pause;
-        private bool _isPlayerNotNull, _isPowerNotNull, _isRayShooterNotNull, _isPauseNotNull;
+        private bool _isPlayerNotNull, _isPowerNotNull, _isRayShooterNotNull, _isPauseNotNull, _isMouseLookNotNull;
 
         private void Start()
         {
@@ -27,6 +27,7 @@ namespace Mechanics
             _isPlayerNotNull = _player != null;
             _isRayShooterNotNull = _shoot != null;
             _isPauseNotNull = _pause != null;
+            _isMouseLookNotNull = _mouseLook != null;
         }
 
         private void Update()
@@ -44,10 +45,13 @@ namespace Mechanics
                 _shoot.shootAxis = Application.isEditor ? Input.GetButtonDown("Fire1") : shootButton.pressed;
             
             if (_isPauseNotNull)
-                _pause.PauseAxis = Application.isEditor ? Input.GetButtonDown("Pause") : pauseButton.pressed;
+                _pause.pauseAxis = Application.isEditor ? Input.GetButtonDown("Pause") : pauseButton.pressed;
 
-            _mouseLook.lookAxis.x = Application.isEditor ? Input.GetAxis("Mouse X") : lookJoystick.touchDist.x;
-            _mouseLook.lookAxis.y = Application.isEditor ? Input.GetAxis("Mouse Y") : lookJoystick.touchDist.y;
+            if (_isMouseLookNotNull)
+            {
+                _mouseLook.lookAxis.x = Application.isEditor ? Input.GetAxis("Mouse X") : lookJoystick.touchDist.x;
+                _mouseLook.lookAxis.y = Application.isEditor ? Input.GetAxis("Mouse Y") : lookJoystick.touchDist.y;
+            }
         }
     }
 }

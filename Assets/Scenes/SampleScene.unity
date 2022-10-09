@@ -1108,7 +1108,7 @@ MonoBehaviour:
       m_Calls: []
   m_Sprite: {fileID: 21300000, guid: cea183c7c0b6541b8af23b6490c70998, type: 3}
   m_Type: 0
-  m_PreserveAspect: 0
+  m_PreserveAspect: 1
   m_FillCenter: 1
   m_FillMethod: 4
   m_FillAmount: 1
@@ -1139,10 +1139,10 @@ RectTransform:
   m_Father: {fileID: 433132313}
   m_RootOrder: 7
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 356, y: 156}
-  m_SizeDelta: {x: 36, y: 40}
+  m_AnchorMin: {x: 0.9025, y: 0.82689905}
+  m_AnchorMax: {x: 0.96875006, y: 0.96075964}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!1 &392541484
 GameObject:
@@ -2131,7 +2131,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1.5999985}
+  m_AnchoredPosition: {x: 0, y: 1.6000061}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &870954040
@@ -2779,7 +2779,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.14838985, y: 0.29133165}
   m_AnchorMax: {x: 0.8566102, y: 0.42400002}
-  m_AnchoredPosition: {x: 1, y: -0.40000916}
+  m_AnchoredPosition: {x: 1, y: -0.4000244}
   m_SizeDelta: {x: 100, y: 28}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1241299547
@@ -3121,6 +3121,7 @@ GameObject:
   - component: {fileID: 1395317386}
   - component: {fileID: 1395317385}
   - component: {fileID: 1395317388}
+  - component: {fileID: 1395317389}
   m_Layer: 0
   m_Name: GameController
   m_TagString: Untagged
@@ -3145,8 +3146,7 @@ MonoBehaviour:
   playerCam: {fileID: 243192495}
   gameOver: 0
   pause: 0
-  pauseButton: {fileID: 328728062}
-  PauseAxis: 0
+  pauseAxis: 0
 --- !u!4 &1395317386
 Transform:
   m_ObjectHideFlags: 0
@@ -3176,6 +3176,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   scoreText: {fileID: 763960402}
   bestScoreText: {fileID: 713313595}
+--- !u!114 &1395317389
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1395317384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca34fcd6af44a87aa8d4089d66cdb66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveJoystick: {fileID: 249408103}
+  lookJoystick: {fileID: 2038826027}
+  ultaButton: {fileID: 1182100196}
+  shootButton: {fileID: 1243397520}
+  pauseButton: {fileID: 328728063}
 --- !u!1 &1418040611
 GameObject:
   m_ObjectHideFlags: 0
@@ -3784,7 +3801,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.147, y: 0.30400002}
   m_AnchorMax: {x: 0.8564407, y: 0.44300002}
-  m_AnchoredPosition: {x: -1, y: 0.30000305}
+  m_AnchoredPosition: {x: -1, y: 0.2999878}
   m_SizeDelta: {x: 104, y: 26}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1902113698
@@ -4246,7 +4263,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 1.9000015}
+  m_AnchoredPosition: {x: 0, y: 1.8999939}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2119554201
