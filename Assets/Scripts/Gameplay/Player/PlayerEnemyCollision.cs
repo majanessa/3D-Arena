@@ -15,7 +15,10 @@ namespace Gameplay.Player
         {
             Player.health.Hurt(Damage);
             if (Enemy != null)
-                Schedule<EnemyDeath>();
+            {
+                var ev = Schedule<EnemyDeath>();
+                ev.Enemy = Enemy;
+            }
         }
     }
 }

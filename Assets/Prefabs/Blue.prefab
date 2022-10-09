@@ -65,7 +65,7 @@ MeshRenderer:
   m_RenderingLayerMask: 4294967295
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 8f05751f77bc9ba4e8261bd8f356e88b, type: 2}
+  - {fileID: 2100000, guid: e054df7fe20dcd241b757ce007d6674f, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -113,6 +113,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ac453546060a4d8fa34482af193bdd59, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  playerController: {fileID: 0}
   fireballPrefab: {fileID: 1622288707195270625, guid: f51c6bb8042e7bf29b057c1f1bb3eced,
     type: 3}
 --- !u!114 &5990453287983312429

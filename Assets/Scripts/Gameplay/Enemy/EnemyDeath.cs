@@ -1,23 +1,18 @@
 using Core;
 using Mechanics.Enemy;
-using Mechanics.Player;
-using UI;
+using UnityEngine;
 
 namespace Gameplay.Enemy
 {
     public class EnemyDeath : Simulation.Event<EnemyDeath>
     {
-        public EnemyController Enemy;
-
-        public PlayerController Player;
+        public GameObject Enemy;
         
         public override void Execute()
         {
-            Player.power.AddPower(Enemy.Model.PowerForPlayer);
-            Score.Instance.AddScore(1);
             // Return enemy to spawn
             if (ReactiveTarget.OnSpawn != null)
-                ReactiveTarget.OnSpawn(Enemy.gameObject);
+                ReactiveTarget.OnSpawn(Enemy);
         }
     }
 }

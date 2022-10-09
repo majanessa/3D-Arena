@@ -11,24 +11,31 @@ namespace Mechanics.Player
         
         public GameObject ultaButton;
 
+        [HideInInspector]
         public bool powerAxis;
         
         [HideInInspector]
         public float currentPower;
+
+        public ParticleSystem collapse;
         
         private readonly PlayerModel _model = Simulation.GetModel<PlayerModel>();
         
         private GameObject[] _enemies;
 
+        private PlayerController _player;
+
         private void Start()
         {
             currentPower = _model.power;
             powerBar.offsetMax = new Vector2(-1f * 200f * (_model.maxPower - _model.power) / 100f, 0);
+            _player = GetComponent<PlayerController>();
         }
 
         private void Update()
         {
-            Ulta();
+            if (_player.Alive)
+                Ulta();
         }
 
         public void AddPower(int power)
@@ -46,6 +53,7 @@ namespace Mechanics.Player
                 ultaButton.SetActive(true);
                 if (powerAxis)
                 {
+                    collapse.Play();
                     _enemies = GameObject.FindGameObjectsWithTag("Enemy");
                     if (ReactiveTarget.OnSpawn != null)
                     {

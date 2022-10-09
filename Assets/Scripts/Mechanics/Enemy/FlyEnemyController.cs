@@ -47,6 +47,7 @@ namespace Mechanics.Enemy
             {
                 var ev = Schedule<PlayerEnemyCollision>();
                 ev.Player = collision.gameObject.GetComponent<PlayerController>();
+                ev.Enemy = gameObject;
                 ev.Damage = Model.Damage;
             }
         }
