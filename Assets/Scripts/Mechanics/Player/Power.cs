@@ -1,6 +1,7 @@
 using Core;
 using Mechanics.Enemy;
 using Model;
+using UI;
 using UnityEngine;
 
 namespace Mechanics.Player
@@ -60,6 +61,7 @@ namespace Mechanics.Player
                         for (int i = 0; i < _enemies.Length; i++)
                         {
                             ReactiveTarget.OnSpawn(_enemies[i]);
+                            Score.Instance.AddScore(1);
                         }
                     }
                     

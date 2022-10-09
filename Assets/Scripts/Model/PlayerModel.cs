@@ -9,8 +9,8 @@ namespace Model
 
         public int maxPower = 100;
 
-        public float speed = 3.0f;
+        public float speed = 6.0f;
 
-        public float rotateSpeed = 6.0f;
+        public float rotateSpeed = 9.0f;
     }
 }

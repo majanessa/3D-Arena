@@ -17,7 +17,7 @@ namespace Mechanics.Player
 
         public bool Alive { get; set; }
 
-        private readonly PlayerModel _model = GetModel<PlayerModel>();
+        public PlayerModel model = GetModel<PlayerModel>();
 
         private void Start()
         {
@@ -32,8 +32,8 @@ namespace Mechanics.Player
             if (Alive)
             {
                 float vertMove = runAxis.y;
-                _rb.MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * _model.speed * vertMove));
-                transform.Rotate(Vector3.up * _model.rotateSpeed * runAxis.x);
+                _rb.MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * model.speed * vertMove));
+                transform.Rotate(Vector3.up * model.rotateSpeed * runAxis.x);
             }
         }
 
