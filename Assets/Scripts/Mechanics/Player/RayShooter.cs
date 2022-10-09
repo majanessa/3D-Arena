@@ -1,4 +1,4 @@
-using Gameplay;
+using Gameplay.Player;
 using UnityEngine;
 
 namespace Mechanics.Player
@@ -8,9 +8,11 @@ namespace Mechanics.Player
 
         private void Start() {
             _camera = GetComponent<Camera>();
-            
-            /*Cursor.lockState = CursorLockMode.Locked;
-            Cursor.visible = false;*/
+
+            if (Application.isEditor)
+            {
+                GameController.Instance.CursorLock();
+            }
         }
 
         private void OnGUI() {
@@ -34,7 +36,6 @@ namespace Mechanics.Player
                         fireInstance.GetComponent<Rigidbody>().velocity = fireInstance.transform.forward * 20;
                     }
                 }
-                
             }
         }
     }

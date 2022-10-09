@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-namespace Gameplay
+namespace Gameplay.Player
 {
     public class LightningBallSpawner : MonoBehaviour
     {
@@ -19,7 +19,7 @@ namespace Gameplay
                 pooledObjects.Add(obj);
             }
         }
-
+        
         public GameObject GetPooledObject(Vector3 position)
         {
             foreach (var t in pooledObjects)

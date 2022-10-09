@@ -1,17 +1,17 @@
-using UI;
 using UnityEngine;
 
 namespace Mechanics.Player
 {
-    public class MouseLook : MonoBehaviour {
+    public class MouseLook : MonoBehaviour 
+    {
         
-        public FixedTouchField lookJoystick;
         public enum RotationAxes {
             MouseXAndY = 0,
             MouseX = 1,
             MouseY = 2
         }
         public RotationAxes axes = RotationAxes.MouseXAndY;
+        public Vector3 lookAxis;
         public float sensitivityHor = 2.0f;
         public float sensitivityVert = 2.0f;
         public float minimumVert = -45.0f;
@@ -28,18 +28,18 @@ namespace Mechanics.Player
             if (!GameController.Instance.pause)
             {
                 if (axes == RotationAxes.MouseX) {
-                    transform.Rotate(0, lookJoystick.touchDist.x * sensitivityHor, 0);
+                    transform.Rotate(0, lookAxis.x * sensitivityHor, 0);
                 }
                 else if (axes == RotationAxes.MouseY) {
-                    _rotationX -= lookJoystick.touchDist.y * sensitivityVert;
+                    _rotationX -= lookAxis.y * sensitivityVert;
                     _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
                     float rotationY = transform.localEulerAngles.y;
                     transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
                 }
                 else {
-                    _rotationX -= lookJoystick.touchDist.y * sensitivityVert;
+                    _rotationX -= lookAxis.y * sensitivityVert;
                     _rotationX = Mathf.Clamp(_rotationX, minimumVert, maximumVert);
-                    float delta = lookJoystick.touchDist.x * sensitivityHor;
+                    float delta = lookAxis.x * sensitivityHor;
                     float rotationY = transform.localEulerAngles.y + delta;
             
                     transform.localEulerAngles = new Vector3(_rotationX, rotationY, 0);
@@ -48,4 +48,3 @@ namespace Mechanics.Player
         }
     }
 }
-

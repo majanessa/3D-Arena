@@ -1,5 +1,4 @@
-using Core;
-using Gameplay;
+using Gameplay.Player;
 using Mechanics.Player;
 using Model.Enemy;
 using UnityEngine;
@@ -9,11 +8,12 @@ namespace Mechanics.Enemy
 {
     public class FireballController : EnemyController
     {
-        private readonly BossEnemyModel _bossEnemyModel = Simulation.GetModel<BossEnemyModel>();
+        private readonly BossEnemyModel _bossEnemyModel = GetModel<BossEnemyModel>();
 
         private void Update()
         {
-            transform.position = Vector3.MoveTowards(transform.position, PlayerTarget.position, Time.deltaTime * 3f);
+            if (playerController.Alive)
+                transform.position = Vector3.MoveTowards(transform.position, PlayerTarget.position, Time.deltaTime * 3f);
         }
 
         private void OnCollisionEnter(Collision collision)

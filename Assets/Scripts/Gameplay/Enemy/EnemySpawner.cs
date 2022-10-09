@@ -5,7 +5,7 @@ using Mechanics.Enemy;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-namespace Gameplay
+namespace Gameplay.Enemy
 {
     public abstract class EnemySpawner : MonoBehaviour
     {
@@ -47,7 +47,7 @@ namespace Gameplay
 
         private IEnumerator Spawn()
         {
-            while (true)
+            while (!GameController.Instance.gameOver)
             {
                 if (_maxIntervalSpawn > _minIntervalSpawn)
                 {

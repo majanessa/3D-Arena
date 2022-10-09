@@ -1,8 +1,9 @@
 using System.Collections;
-using Core;
+using Gameplay.Player;
 using Mechanics.Player;
 using Model.Enemy;
 using UnityEngine;
+using static Core.Simulation;
 
 namespace Mechanics.Enemy
 {
@@ -16,12 +17,13 @@ namespace Mechanics.Enemy
             base.Start();
             _up = false;
             _heightTarget = GameObject.FindGameObjectWithTag("HeightFly").GetComponent<Transform>();
-            Model = Simulation.GetModel<FlyEnemyModel>();
+            Model = GetModel<FlyEnemyModel>();
         }
 
         protected void Update()
         {
-            StartCoroutine(Fly());
+            if (playerController.Alive)
+                StartCoroutine(Fly());
         }
 
         private IEnumerator Fly()
@@ -43,9 +45,9 @@ namespace Mechanics.Enemy
         {
             if (collision.gameObject.CompareTag("Player"))
             {
-                PlayerController player = collision.gameObject.GetComponent<PlayerController>();
-                player.health.Hurt(Model.Damage);
-                ReactiveTarget.OnSpawn(gameObject);
+                var ev = Schedule<PlayerEnemyCollision>();
+                ev.Player = collision.gameObject.GetComponent<PlayerController>();
+                ev.Damage = Model.Damage;
             }
         }
     }

@@ -1,7 +1,8 @@
 using System;
+using Gameplay.Enemy;
 using Mechanics.Player;
-using UI;
 using UnityEngine;
+using static Core.Simulation;
 
 namespace Mechanics.Enemy
 {
@@ -10,10 +11,9 @@ namespace Mechanics.Enemy
         public static Action<GameObject> OnSpawn;
 
         public void ReactToHit(PlayerController player) {
-            EnemyController enemy = gameObject.GetComponent<EnemyController>();
-            player.power.AddPower(enemy.Model.PowerForPlayer);
-            OnSpawn(gameObject);
-            Score.Instance.AddScore(1);
+            var ev = Schedule<EnemyDeath>();
+            ev.Enemy = gameObject.GetComponent<EnemyController>();
+            ev.Player = player;
         }
     }
 }

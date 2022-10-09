@@ -1,5 +1,4 @@
-using Core;
-using Gameplay;
+using Gameplay.Player;
 using Model;
 using UnityEngine;
 using static Core.Simulation;
@@ -8,36 +7,39 @@ namespace Mechanics.Player
 {
     public class PlayerController : MonoBehaviour
     {
-        public FixedJoystick moveJoystick;
         [HideInInspector]
         public Health health;
         [HideInInspector]
         public Power power;
+
+        public Vector3 runAxis;
         private Rigidbody _rb;
-        private bool _alive;
-        private readonly PlayerModel _model = Simulation.GetModel<PlayerModel>();
+
+        public bool Alive { get; set; }
+
+        private readonly PlayerModel _model = GetModel<PlayerModel>();
 
         private void Start()
         {
             health = GetComponent<Health>();
             power = GetComponent<Power>();
             _rb = GetComponent<Rigidbody>();
-            _alive = true;
+            Alive = true;
         }
 
         private void Update()
         {
-            if (_alive)
+            if (Alive)
             {
-                float vertMove = moveJoystick.Vertical;
+                float vertMove = runAxis.y;
                 _rb.MovePosition(transform.position + (transform.forward * Time.fixedDeltaTime * _model.speed * vertMove));
-                transform.Rotate(Vector3.up * _model.rotateSpeed * moveJoystick.Horizontal);
+                transform.Rotate(Vector3.up * _model.rotateSpeed * runAxis.x);
             }
         }
 
         private void OnTriggerExit(Collider other)
         {
-            if (other.CompareTag("ArenaBorders"))
+            if (other.CompareTag("ArenaBorders") && Alive)
             {
                 var ev = Schedule<PlayerSpawn>();
                 ev.Player = this;

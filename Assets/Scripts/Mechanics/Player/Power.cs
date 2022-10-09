@@ -1,7 +1,6 @@
 using Core;
 using Mechanics.Enemy;
 using Model;
-using UI;
 using UnityEngine;
 
 namespace Mechanics.Player
@@ -10,7 +9,9 @@ namespace Mechanics.Player
     {
         public RectTransform powerBar;
         
-        public FixedButton ultaButton;
+        public GameObject ultaButton;
+
+        public bool powerAxis;
         
         [HideInInspector]
         public float currentPower;
@@ -21,6 +22,7 @@ namespace Mechanics.Player
 
         private void Start()
         {
+            currentPower = _model.power;
             powerBar.offsetMax = new Vector2(-1f * 200f * (_model.maxPower - _model.power) / 100f, 0);
         }
 
@@ -41,16 +43,21 @@ namespace Mechanics.Player
         {
             if (currentPower >= _model.maxPower)
             {
-                ultaButton.gameObject.SetActive(true);
-                if (ultaButton.pressed)
+                ultaButton.SetActive(true);
+                if (powerAxis)
                 {
                     _enemies = GameObject.FindGameObjectsWithTag("Enemy");
-                    for (int i = 0; i < _enemies.Length; i++)
+                    if (ReactiveTarget.OnSpawn != null)
                     {
-                        ReactiveTarget.OnSpawn(_enemies[i]);
+                        for (int i = 0; i < _enemies.Length; i++)
+                        {
+                            ReactiveTarget.OnSpawn(_enemies[i]);
+                        }
                     }
+                    
                     powerBar.offsetMax = new Vector2(200f * (-_model.maxPower - _model.maxPower) / 100f, 0);
                     currentPower = 0;
+                    ultaButton.SetActive(false);
                 }
             }
         }

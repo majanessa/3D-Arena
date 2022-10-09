@@ -15,12 +15,14 @@ namespace Mechanics.Enemy
             base.Start();
             Model = Simulation.GetModel<BossEnemyModel>();
             transform.TransformPoint(PlayerTarget.position * Model.Speed);
-            StartCoroutine(FireballSpawn());
+            if (playerController.Alive)
+                StartCoroutine(FireballSpawn());
         }
 
         protected void Update()
         {
-            StartCoroutine(GoToPlayer());
+            if (playerController.Alive)
+                StartCoroutine(GoToPlayer());
         }
 
         private IEnumerator GoToPlayer()
@@ -31,7 +33,7 @@ namespace Mechanics.Enemy
         
         private IEnumerator FireballSpawn()
         {
-            while (true)
+            while (!GameController.Instance.gameOver)
             {
                 yield return new WaitForSeconds(3);
                 GameObject fireball = Instantiate(fireballPrefab);

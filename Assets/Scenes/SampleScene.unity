@@ -727,6 +727,21 @@ Camera:
     type: 3}
   m_PrefabInstance: {fileID: 6016422904000049657}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &243192500
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 243192484}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca34fcd6af44a87aa8d4089d66cdb66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveJoystick: {fileID: 249408103}
+  lookJoystick: {fileID: 1824301249}
+  ultaButton: {fileID: 1852543620}
 --- !u!1 &247578953
 GameObject:
   m_ObjectHideFlags: 0
@@ -2834,7 +2849,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   powerBar: {fileID: 229005640}
-  ultaButton: {fileID: 1852543620}
+  ultaButton: {fileID: 1852543615}
+  powerAxis: 0
   currentPower: 0
 --- !u!114 &1375209302
 MonoBehaviour:
@@ -2850,6 +2866,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   healthBar: {fileID: 392541485}
   currentHealth: 0
+--- !u!114 &1375209303
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1122861184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fca34fcd6af44a87aa8d4089d66cdb66, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveJoystick: {fileID: 249408103}
+  lookJoystick: {fileID: 1824301249}
+  ultaButton: {fileID: 1852543620}
 --- !u!1 &1395317384
 GameObject:
   m_ObjectHideFlags: 0
@@ -3104,7 +3135,7 @@ GameObject:
   - component: {fileID: 1824301247}
   - component: {fileID: 1824301249}
   m_Layer: 5
-  m_Name: Panel
+  m_Name: Look Joystick
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -3275,7 +3306,7 @@ GameObject:
   - component: {fileID: 1852543619}
   - component: {fileID: 1852543621}
   m_Layer: 5
-  m_Name: Ulta
+  m_Name: Ulta Button
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

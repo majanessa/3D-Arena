@@ -1,9 +1,10 @@
+using Gameplay.Enemy;
 using JetBrains.Annotations;
 using Mechanics.Player;
 using UnityEngine;
 using static Core.Simulation;
 
-namespace Gameplay
+namespace Gameplay.Player
 {
     public class PlayerEnemyCollision : Event<PlayerEnemyCollision>
     {

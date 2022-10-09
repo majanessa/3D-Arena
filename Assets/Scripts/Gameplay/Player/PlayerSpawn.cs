@@ -2,7 +2,7 @@ using Core;
 using Mechanics.Player;
 using UnityEngine;
 
-namespace Gameplay
+namespace Gameplay.Player
 {
     public class PlayerSpawn : Simulation.Event<PlayerSpawn>
     {

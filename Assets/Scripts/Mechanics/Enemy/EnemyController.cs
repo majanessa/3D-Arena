@@ -1,3 +1,4 @@
+using Mechanics.Player;
 using Model.Enemy;
 using UnityEngine;
 
@@ -5,12 +6,15 @@ namespace Mechanics.Enemy
 {
     public abstract class EnemyController : MonoBehaviour
     {
-        protected Transform PlayerTarget;
         public IEnemyModel Model;
+        public PlayerController playerController;
+        protected Transform PlayerTarget;
 
         protected virtual void Start()
         {
-            PlayerTarget = GameObject.FindGameObjectWithTag("Player").GetComponent<Transform>();
+            GameObject player = GameObject.FindGameObjectWithTag("Player");
+            playerController = player.GetComponent<PlayerController>();
+            PlayerTarget = player.GetComponent<Transform>();
         }
     }
 }

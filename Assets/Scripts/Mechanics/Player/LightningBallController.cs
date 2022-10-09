@@ -24,7 +24,6 @@ namespace Mechanics.Player
                 _countEnemy++;
                 if (_countEnemy >= 2)
                 {
-                    Debug.Log("Yes");
                     player.power.AddPower(15);
                     player.health.AddHalfHurt();
                 }
